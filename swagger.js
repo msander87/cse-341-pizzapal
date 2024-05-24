@@ -1,8 +1,8 @@
 const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info:{
-        title: 'Football Api',
-        description: 'Football Api'
+        title: 'PizzaPal Api',
+        description: 'PizzaPal Api'
     },
     host: 'localhost:3000',
     schemes: ['http', 'https']
