@@ -3,9 +3,9 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 
 const getAll = async (req, res) => {
-  //#swagger.tags=['Players']
+  //#swagger.tags=['Users']
   try {
-    const result = await mongodb.getDatabase().db().collection('player').find();
+    const result = await mongodb.getDatabase().db().collection('user').find();
     result.toArray().then((users) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users);
@@ -22,13 +22,13 @@ const getAll = async (req, res) => {
 
 
 const getSingle = async (req, res) => {
-  //#swagger.tags=['Players']
+  //#swagger.tags=['Users']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid player id');
+    res.status(400).json('Must use a valid user id');
   }
   const documentId = new ObjectId(req.params.id);
   try {
-    const result = await mongodb.getDatabase().db().collection('player').find({_id:documentId});
+    const result = await mongodb.getDatabase().db().collection('user').find({_id:documentId});
     result.toArray().then((users) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users[0]);
@@ -45,51 +45,49 @@ const getSingle = async (req, res) => {
 
 
 const createDocument = async (req, res) => {
-  //#swagger.tags=['Players']
+  //#swagger.tags=['Users']
   const document = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    height: req.body.height,
-    weight: req.body.weight,
-    birthday: req.body.birthday,
-    goals: req.body.goals,
-    nationalTeam: req.body.nationalTeam,
-    club: req.body.club,
+    type: req.body.type,
+    name: req.body.name,
+    email: req.body.email,
+    oauth_provider: req.body.oauth_provider,
+    oauth_id: req.body.oauth_id,
+    address: req.body.address,
+    phone: req.body.phone,
   };
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection("player")
+    .collection("user")
     .insertOne(document);
   if (response.acknowledged) {
     res.status(204).send();
   } else {
     res
       .status(500)
-      .json(response.error || "Some error ocurred while creating the player.");
+      .json(response.error || "Some error ocurred while creating the user.");
   }
 };
 
 const updateDocument = async (req, res) => {
-  //#swagger.tags=['Players']
+  //#swagger.tags=['Users']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid player id');
+    res.status(400).json('Must use a valid user id');
   }
   const documentId = new ObjectId(req.params.id);
   const document = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    height: req.body.height,
-    weight: req.body.weight,
-    birthday: req.body.birthday,
-    goals: req.body.goals,
-    nationalTeam: req.body.nationalTeam,
-    club: req.body.club,
+    type: req.body.type,
+    name: req.body.name,
+    email: req.body.email,
+    oauth_provider: req.body.oauth_provider,
+    oauth_id: req.body.oauth_id,
+    address: req.body.address,
+    phone: req.body.phone,
   };
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection("player")
+    .collection("user")
     .replaceOne({
       _id: documentId
     }, document);
@@ -98,20 +96,20 @@ const updateDocument = async (req, res) => {
   } else {
     res
       .status(500)
-      .json(response.error || "Some error ocurred while modifying the player.");
+      .json(response.error || "Some error ocurred while modifying the user.");
   }
 };
 
 const deleteDocument = async (req, res) => {
-  //#swagger.tags=['Players']
+  //#swagger.tags=['Users']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid player id');
+    res.status(400).json('Must use a valid user id');
   }
   const documentId = new ObjectId(req.params.id);
   const response = await mongodb
     .getDatabase()
     .db()
-    .collection("player")
+    .collection("user")
     .deleteOne({
       _id: documentId
     });
@@ -120,7 +118,7 @@ const deleteDocument = async (req, res) => {
   } else {
     res
       .status(500)
-      .json(response.error || "Some error ocurred while deleting the player.");
+      .json(response.error || "Some error ocurred while deleting the user.");
   }
 };
 
