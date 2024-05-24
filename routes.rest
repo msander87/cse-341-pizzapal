@@ -3,112 +3,59 @@
 ### Get home
 http://localhost:3000/
 
-### Get all players
-http://localhost:3000/players/
+### Get all user
+http://localhost:3000/user/
 
-### Get all clubs
-http://localhost:3000/clubs/
+### Get all order
+http://localhost:3000/order/
 
-### Get a single player
-http://localhost:3000/players/66451233507e940ffa3f5a4c
+### Get a single user
+http://localhost:3000/user/66451233507e940ffa3f5a4c
 
-### Get a single club
-http://localhost:3000/clubs/66451233507e940ffa3f5a4c
+### Get a single order
+http://localhost:3000/order/66451233507e940ffa3f5a4c
 
-### Create a player
-POST http://localhost:3000/players/ HTTP/1.1
+### Create a user
+POST http://localhost:3000/user/ HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Edinson",
-    "lastName": "Cavani",
-    "height": "187cm",
-    "weight": "80kg",
-    "birthday": "02/14/1987",
-    "goals": "500",
-    "nationalTeam": "Uruguay",
-    "club": "Manchester United"
+    "type": "customer",
+    "name": "Tom Porter",
+    "email": "tomporter@mail.com",
+    "oauth_provider": "github",
+    "oauth_id": "xxxxxxx",
+    "address": "main 1234",
+    "phone": "12345678"
 }
 
-### Create a club
-POST http://localhost:3000/clubs/ HTTP/1.1
+### Create a order
+POST http://localhost:3000/order/ HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Bayern Munchen",
-    "creationYear": "1900",
-    "country": "Germany"
+    "customer_id": "cxcxcxcxc",
+    "items": "pizza",
+    "status": "received",
+    "created_at": "05/24/2024",
+    "updated_at": "05/25/2024"
 }
 
 
-### Update a player
-PUT http://localhost:3000/players/66450fa094cf93115b216f30 HTTP/1.1
+### Update a user
+PUT http://localhost:3000/user/66450fa094cf93115b216f30 HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Edinson",
-    "lastName": "Cavani",
-    "height": "187cm",
-    "weight": "80kg",
-    "birthday": "02/14/1987",
-    "goals": "520",
-    "nationalTeam": "Uruguay",
-    "club": "Boca"
+    "customer_id": "cxcxcxcxc",
+    "items": "pizza",
+    "status": "received",
+    "created_at": "05/24/2024",
+    "updated_at": "05/25/2024"
 }
 
-### Delete a player
-DELETE http://localhost:3000/players/66450fa094cf93115b216f30 HTTP/1.1
-
-
-
-
-//Live
-
-### Get home
-https://cse-341-football.onrender.com/
-
-### Get all players
-https://cse-341-football.onrender.com/players/
-
-### Get a single player
-https://cse-341-football.onrender.com/players/66451233507e940ffa3f5a4c
-
-### Create a player
-POST https://cse-341-football.onrender.com/players/ HTTP/1.1
-content-type: application/json
-
-{
-    "firstName": "Edinson",
-    "lastName": "Cavani",
-    "height": "187cm",
-    "weight": "80kg",
-    "birthday": "02/14/1987",
-    "goals": "500",
-    "nationalTeam": "Uruguay",
-    "club": "Manchester United"
-}
-
-
-### Update a player
-PUT https://cse-341-football.onrender.com/players/66450fa094cf93115b216f30 HTTP/1.1
-Content-Type: application/json
-
-{
-    "firstName": "Edinson",
-    "lastName": "Cavani",
-    "height": "187cm",
-    "weight": "80kg",
-    "birthday": "02/14/1987",
-    "goals": "520",
-    "nationalTeam": "Uruguay",
-    "club": "Boca"
-}
-
-### Delete a player
-DELETE https://cse-341-football.onrender.com/players/66450fa094cf93115b216f30 HTTP/1.1
-
-
-
+### Delete a user
+DELETE http://localhost:3000/user/66450fa094cf93115b216f30 HTTP/1.1
 
 
 
