@@ -26,7 +26,7 @@ const getSingle = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id');
   }
-  const documentId = new ObjectId(req.params.id);
+  const documentId = ObjectId.createFromHexString(req.params.id);
   try {
     const result = await mongodb.getDatabase().db().collection('user').find({_id:documentId});
     result.toArray().then((users) => {
@@ -74,7 +74,7 @@ const updateDocument = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id');
   }
-  const documentId = new ObjectId(req.params.id);
+  const documentId = ObjectId.createFromHexString(req.params.id);
   const document = {
     type: req.body.type,
     name: req.body.name,
@@ -105,7 +105,7 @@ const deleteDocument = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid user id');
   }
-  const documentId = new ObjectId(req.params.id);
+  const documentId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
     .getDatabase()
     .db()

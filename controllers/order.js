@@ -23,7 +23,7 @@ const getSingle = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must use a valid order id");
   }
-  const documentId = new ObjectId(req.params.id);
+  const documentId = ObjectId.createFromHexString(req.params.id);
   try {
     const result = await mongodb
       .getDatabase()
@@ -70,7 +70,7 @@ const updateDocument = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must use a valid order id");
   }
-  const documentId = new ObjectId(req.params.id);
+  const documentId = ObjectId.createFromHexString(req.params.id);
   const document = {
     customer_id: req.body.customer_id,
     items: req.body.items,
@@ -102,7 +102,7 @@ const deleteDocument = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json("Must use a valid order id");
   }
-  const documentId = new ObjectId(req.params.id);
+  const documentId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
     .getDatabase()
     .db()
