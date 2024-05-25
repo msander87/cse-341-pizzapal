@@ -17,7 +17,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get all users",
         "produces": [
           "application/json"
         ],
@@ -37,7 +37,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Create a new user",
         "parameters": [
           {
             "name": "body",
@@ -85,7 +85,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get a single user",
         "produces": [
           "application/json"
         ],
@@ -94,7 +94,8 @@
             "name": "id",
             "in": "path",
             "required": false,
-            "type": "string"
+            "type": "string",
+            "description": "User OAuth ID"
           }
         ],
         "responses": {
@@ -113,13 +114,14 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Update a user",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": false,
-            "type": "string"
+            "type": "string",
+            "description": "User OAuth ID"
           },
           {
             "name": "body",
@@ -162,13 +164,14 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Delete a user",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": false,
-            "type": "string"
+            "type": "string",
+            "description": "User OAuth ID"
           }
         ],
         "responses": {
@@ -189,7 +192,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Get all orders",
         "produces": [
           "application/json"
         ],
@@ -211,7 +214,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Get a single order",
         "produces": [
           "application/json"
         ],
@@ -220,7 +223,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Object ID"
           }
         ],
         "responses": {
@@ -239,13 +243,14 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Create a new order",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "required": true,
-            "type": "string"
+            "required": false,
+            "type": "string",
+            "description": "Customer ID"
           },
           {
             "name": "body",
@@ -285,13 +290,14 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Update an order",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Object ID"
           },
           {
             "name": "body",
@@ -337,13 +343,14 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Delete an order",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Object ID"
           }
         ],
         "responses": {

@@ -7,7 +7,7 @@ const getAll = async (req, res) => {
   //#swagger.tags=['Users']
   try {
     const access = await authorize(req, res);
-    if (access === "client") {
+    if (access !== "admin") {
       return res.status(401).send({
         success: false,
         message: "You are not authorized to access this resource."

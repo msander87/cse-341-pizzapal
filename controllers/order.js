@@ -69,14 +69,14 @@ const getSingle = async (req, res) => {
 };
 const createDocument = async (req, res) => {
   //#swagger.tags=['Orders']
-  if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
-  }
   let documentId;
   const access = await authorize(req, res);
   if (access === "client") {
     documentId = req.session.user.id;
     } else {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json("Must use a valid order id");
+  }
     documentId = req.params.id;
   }
 

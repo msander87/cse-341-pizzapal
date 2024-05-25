@@ -11,12 +11,15 @@ router.get(
     '/', 
     isAuthenticated, 
     orderController.getAll
+    // #swagger.description = "Get all orders"
 );
 
 router.get(
     '/:id', 
     isAuthenticated, 
     orderController.getSingle
+    // #swagger.description = "Get a single order"
+    // #swagger.parameters['id'] = { description: 'Object ID' }
 );
 
 router.post(
@@ -24,18 +27,25 @@ router.post(
     isAuthenticated, 
     validation.saveOrder, 
     orderController.createDocument
+    // #swagger.description = "Create a new order"
+    // #swagger.parameters['id'] = { description: 'Customer ID' }
 );
 
 router.put(
     '/:id', 
     isAuthenticated, 
     validation.saveOrder, 
-    orderController.updateDocument);
+    orderController.updateDocument
+    // #swagger.description = "Update an order"
+    // #swagger.parameters['id'] = { description: 'Object ID' }
+);
 
 router.delete(
     '/:id', 
     isAuthenticated, 
     orderController.deleteDocument
+    // #swagger.description = "Delete an order"
+    // #swagger.parameters['id'] = { description: 'Object ID' }
 );
 
 
