@@ -37,7 +37,7 @@ const getSingle = async (req, res) => {
   try {
     let documentId;
     const access = await authorize(req, res);
-    if (access === "client") {
+    if (access !== "admin") {
       documentId = req.session.user.id;
     } else {
       documentId = req.params.id;
