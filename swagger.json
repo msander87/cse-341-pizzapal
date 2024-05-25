@@ -1,21 +1,21 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Football Api",
-    "description": "Football Api",
+    "title": "PizzaPal Api",
+    "description": "PizzaPal Api",
     "version": "1.0.0"
   },
-  "host": "cse-341-football.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
-    
-    "/players/": {
+    "/user/": {
       "get": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "produces": [
@@ -27,12 +27,15 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       },
       "post": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -42,28 +45,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "name": {
                   "example": "any"
                 },
-                "lastName": {
+                "email": {
                   "example": "any"
                 },
-                "height": {
+                "address": {
                   "example": "any"
                 },
-                "weight": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "goals": {
-                  "example": "any"
-                },
-                "nationalTeam": {
-                  "example": "any"
-                },
-                "club": {
+                "phone": {
                   "example": "any"
                 }
               }
@@ -77,6 +68,9 @@
           "401": {
             "description": "Unauthorized"
           },
+          "409": {
+            "description": "Conflict"
+          },
           "412": {
             "description": "Precondition Failed"
           },
@@ -86,10 +80,10 @@
         }
       }
     },
-    "/players/{id}": {
+    "/user/{id}": {
       "get": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "produces": [
@@ -99,7 +93,7 @@
           {
             "name": "id",
             "in": "path",
-            "required": true,
+            "required": false,
             "type": "string"
           }
         ],
@@ -109,19 +103,22 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       },
       "put": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
@@ -130,28 +127,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "name": {
                   "example": "any"
                 },
-                "lastName": {
+                "email": {
                   "example": "any"
                 },
-                "height": {
+                "address": {
                   "example": "any"
                 },
-                "weight": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "goals": {
-                  "example": "any"
-                },
-                "nationalTeam": {
-                  "example": "any"
-                },
-                "club": {
+                "phone": {
                   "example": "any"
                 }
               }
@@ -161,9 +146,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -178,23 +160,20 @@
       },
       "delete": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "required": true,
+            "required": false,
             "type": "string"
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -205,10 +184,10 @@
         }
       }
     },
-    "/clubs/": {
+    "/order/": {
       "get": {
         "tags": [
-          "Clubs"
+          "Orders"
         ],
         "description": "",
         "produces": [
@@ -220,28 +199,64 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/order/{id}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       },
       "post": {
         "tags": [
-          "Clubs"
+          "Orders"
         ],
         "description": "",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "items": {
                   "example": "any"
                 },
-                "creationYear": {
-                  "example": "any"
-                },
-                "country": {
+                "status": {
                   "example": "any"
                 }
               }
@@ -251,6 +266,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -262,37 +280,10 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/clubs/{id}": {
-      "get": {
-        "tags": [
-          "Clubs"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
       },
       "put": {
         "tags": [
-          "Clubs"
+          "Orders"
         ],
         "description": "",
         "parameters": [
@@ -308,13 +299,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "items": {
                   "example": "any"
                 },
-                "creationYear": {
-                  "example": "any"
-                },
-                "country": {
+                "status": {
                   "example": "any"
                 }
               }
@@ -330,6 +318,12 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "412": {
             "description": "Precondition Failed"
@@ -341,7 +335,7 @@
       },
       "delete": {
         "tags": [
-          "Clubs"
+          "Orders"
         ],
         "description": "",
         "parameters": [

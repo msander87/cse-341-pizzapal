@@ -7,15 +7,36 @@ const validation = require('../middleware/validate');
 
 
     
-router.get('/', isAuthenticated, orderController.getAll);
+router.get(
+    '/', 
+    isAuthenticated, 
+    orderController.getAll
+);
 
-router.get('/:id', isAuthenticated, orderController.getSingle);
+router.get(
+    '/:id', 
+    isAuthenticated, 
+    orderController.getSingle
+);
 
-router.post('/', isAuthenticated, validation.saveOrder, orderController.createDocument);
+router.post(
+    '/:id', 
+    isAuthenticated, 
+    validation.saveOrder, 
+    orderController.createDocument
+);
 
-router.put('/:id', isAuthenticated, validation.saveOrder, orderController.updateDocument);
+router.put(
+    '/:id', 
+    isAuthenticated, 
+    validation.saveOrder, 
+    orderController.updateDocument);
 
-router.delete('/:id', isAuthenticated, orderController.deleteDocument);
+router.delete(
+    '/:id', 
+    isAuthenticated, 
+    orderController.deleteDocument
+);
 
 
 module.exports = router;
