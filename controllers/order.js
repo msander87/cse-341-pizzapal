@@ -13,19 +13,20 @@ const getAll = async (req, res) => {
         .getDatabase()
         .db()
         .collection("order")
-        .find({ customer_id: req.session.user.id });
-    }
-    else {
+        .find({
+          customer_id: req.session.user.id
+        });
+    } else {
       result = await mongodb
-      .getDatabase()
-      .db()
-      .collection("order")
-      .find();
+        .getDatabase()
+        .db()
+        .collection("order")
+        .find();
     }
     result.toArray().then(orders => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(orders);
-  });
+    });
   } catch (error) {
     return res.status(400).send({
       success: false,
@@ -48,13 +49,18 @@ const getSingle = async (req, res) => {
         .getDatabase()
         .db()
         .collection("order")
-        .find({ _id: documentId, customer_id: req.session.user.id });
+        .find({
+          _id: documentId,
+          customer_id: req.session.user.id
+        });
     } else {
       result = await mongodb
         .getDatabase()
         .db()
         .collection("order")
-        .find({ _id: documentId });
+        .find({
+          _id: documentId
+        });
     }
     result.toArray().then((orders) => {
       res.setHeader("Content-Type", "application/json");
@@ -73,10 +79,10 @@ const createDocument = async (req, res) => {
   const access = await authorize(req, res);
   if (access === "client") {
     documentId = req.session.user.id;
-    } else {
+  } else {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json("Must use a valid order id");
-  }
+    }
     documentId = req.params.id;
   }
 
@@ -115,7 +121,9 @@ const updateDocument = async (req, res) => {
     .getDatabase()
     .db()
     .collection("order")
-    .find({ _id: documentId });
+    .find({
+      _id: documentId
+    });
   if (!order) {
     return res.status(404).json("Order not found.");
   }
@@ -130,8 +138,7 @@ const updateDocument = async (req, res) => {
     .getDatabase()
     .db()
     .collection("order")
-    .replaceOne(
-      {
+    .replaceOne({
         _id: documentId,
       },
       document
@@ -155,21 +162,21 @@ const deleteDocument = async (req, res) => {
   let response;
   if (access === "client") {
     response = await mongodb
-    .getDatabase()
-    .db()
-    .collection("order")
-    .deleteOne({
-      _id: documentId,
-      customer_id: req.session.user.id,
-    });
+      .getDatabase()
+      .db()
+      .collection("order")
+      .deleteOne({
+        _id: documentId,
+        customer_id: req.session.user.id,
+      });
   } else {
-  response = await mongodb
-    .getDatabase()
-    .db()
-    .collection("order")
-    .deleteOne({
-      _id: documentId,
-    });
+    response = await mongodb
+      .getDatabase()
+      .db()
+      .collection("order")
+      .deleteOne({
+        _id: documentId,
+      });
   }
   if (response.deletedCount > 0) {
     res.status(204).send();

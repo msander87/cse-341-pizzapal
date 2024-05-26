@@ -14,10 +14,10 @@ const getAll = async (req, res) => {
       });
     }
     const result = await mongodb
-    .getDatabase()
-    .db()
-    .collection('user')
-    .find();
+      .getDatabase()
+      .db()
+      .collection('user')
+      .find();
     result.toArray().then((users) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users);
@@ -43,10 +43,12 @@ const getSingle = async (req, res) => {
       documentId = req.params.id;
     }
     const result = await mongodb
-    .getDatabase()
-    .db()
-    .collection('user')
-    .find({oauth_id: documentId});
+      .getDatabase()
+      .db()
+      .collection('user')
+      .find({
+        oauth_id: documentId
+      });
     result.toArray().then((users) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users[0]);
@@ -68,7 +70,9 @@ const createDocument = async (req, res) => {
     .getDatabase()
     .db()
     .collection("user")
-    .findOne({ oauth_id: req.session.user.id });
+    .findOne({
+      oauth_id: req.session.user.id
+    });
   if (exists) {
     return res
       .status(409)
@@ -100,12 +104,12 @@ const createDocument = async (req, res) => {
 const updateDocument = async (req, res) => {
   //#swagger.tags=['Users']
   let documentId;
-    const access = await authorize(req, res);
-    if (access !== "admin") {
-      documentId = req.session.user.id;
-    } else {
-      documentId = req.params.id;
-    }
+  const access = await authorize(req, res);
+  if (access !== "admin") {
+    documentId = req.session.user.id;
+  } else {
+    documentId = req.params.id;
+  }
   const document = {
     type: "client",
     name: req.body.name,
@@ -134,12 +138,12 @@ const updateDocument = async (req, res) => {
 const deleteDocument = async (req, res) => {
   //#swagger.tags=['Users']
   let documentId;
-    const access = await authorize(req, res);
-    if (access !== "admin") {
-      documentId = req.session.user.id;
-    } else {
-      documentId = req.params.id;
-    }
+  const access = await authorize(req, res);
+  if (access !== "admin") {
+    documentId = req.session.user.id;
+  } else {
+    documentId = req.params.id;
+  }
   const response = await mongodb
     .getDatabase()
     .db()
