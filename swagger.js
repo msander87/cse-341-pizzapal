@@ -4,8 +4,8 @@ const doc = {
         title: 'PizzaPal Api',
         description: 'PizzaPal Api'
     },
-    host: 'localhost:3000',
-    schemes: ['http', 'https']
+    host: 'cse-341-pizzapal-1.onrender.com',
+    schemes: ['https']
 };
 
 const outputFile = './swagger.json';

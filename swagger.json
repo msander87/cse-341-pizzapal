@@ -5,9 +5,10 @@
     "description": "PizzaPal Api",
     "version": "1.0.0"
   },
-  "host": "cse-341-pizzapal-8476.onrender.com",
+  "host": "https://cse-341-pizzapal-1.onrender.com",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -92,7 +93,7 @@
           {
             "name": "id",
             "in": "path",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "User OAuth ID"
           }
@@ -118,7 +119,7 @@
           {
             "name": "id",
             "in": "path",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "User OAuth ID"
           },
@@ -168,7 +169,7 @@
           {
             "name": "id",
             "in": "path",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "User OAuth ID"
           }
@@ -247,7 +248,7 @@
           {
             "name": "id",
             "in": "path",
-            "required": false,
+            "required": true,
             "type": "string",
             "description": "Customer ID"
           },

@@ -110,8 +110,15 @@ const updateDocument = async (req, res) => {
   } else {
     documentId = req.params.id;
   }
+  const user = await mongodb
+    .getDatabase()
+    .db()
+    .collection("user")
+    .findOne({
+      oauth_id: documentId
+    });
   const document = {
-    type: "client",
+    type: user.type,
     name: req.body.name,
     email: req.body.email,
     oauth_provider: req.session.user.provider,
