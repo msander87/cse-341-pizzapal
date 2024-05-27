@@ -80,9 +80,6 @@ const createDocument = async (req, res) => {
   if (access === "client") {
     documentId = req.session.user.id;
   } else {
-    if (!ObjectId.isValid(req.params.id)) {
-      return res.status(400).json("Must use a valid order id");
-    }
     documentId = req.params.id;
   }
 
@@ -121,10 +118,10 @@ const updateDocument = async (req, res) => {
     .getDatabase()
     .db()
     .collection("order")
-    .find({
+    .findOne({
       _id: documentId
     });
-  if (!order) {
+  if (order.length === 0) {
     return res.status(404).json("Order not found.");
   }
   const document = {
