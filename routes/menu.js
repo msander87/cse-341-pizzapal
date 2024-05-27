@@ -116,7 +116,7 @@ router.get(
 router.post(
     '/product',
     isAuthenticated,
-    validation.validateProduct,
+    validation.validateMenuItem,
     menuController.createProduct,
     // #swagger.description = "Create a product"
 );
@@ -124,7 +124,7 @@ router.post(
 router.post(
     '/topping',
     isAuthenticated,
-    validation.validateTopping,
+    validation.validateMenuItem,
     menuController.createTopping,
     // #swagger.description = "Create a topping"
 );
@@ -132,7 +132,7 @@ router.post(
 router.post(
     '/size',
     isAuthenticated,
-    validation.validateSize,
+    validation.validateMenuItem,
     menuController.createSize,
     // #swagger.description = "Create a size"
 );
@@ -140,7 +140,7 @@ router.post(
 router.post(
     '/crust',
     isAuthenticated,
-    validation.validateCrust,
+    validation.validateMenuItem,
     menuController.createCrust,
     // #swagger.description = "Create a crust"
 );
@@ -148,7 +148,7 @@ router.post(
 router.put(
     '/product/:id',
     isAuthenticated,
-    validation.validateProduct,
+    validation.validateMenuItem,
     menuController.updateProduct,
     // #swagger.description = "Update a product"
     // #swagger.parameters['id'] = { description: 'Object ID' }
@@ -157,7 +157,7 @@ router.put(
 router.put(
     '/topping/:id',
     isAuthenticated,
-    validation.validateTopping,
+    validation.validateMenuItem,
     menuController.updateTopping,
     // #swagger.description = "Update a topping"
     // #swagger.parameters['id'] = { description: 'Object ID' }
@@ -166,7 +166,7 @@ router.put(
 router.put(
     '/size/:id',
     isAuthenticated,
-    validation.validateSize,
+    validation.validateMenuItem,
     menuController.updateSize,
     // #swagger.description = "Update a size"
     // #swagger.parameters['id'] = { description: 'Object ID' }
@@ -175,7 +175,7 @@ router.put(
 router.put(
     '/crust/:id',
     isAuthenticated,
-    validation.validateCrust,
+    validation.validateMenuItem,
     menuController.updateCrust,
     // #swagger.description = "Update a crust"
     // #swagger.parameters['id'] = { description: 'Object ID' }
