@@ -4,7 +4,7 @@ const doc = {
         title: 'PizzaPal Api',
         description: 'PizzaPal Api'
     },
-    host: 'cse-341-pizzapal-1.onrender.com',
+    host: 'cse-341-pizzapal-8476.onrender.com',
     schemes: ['https']
 };
 
