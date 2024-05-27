@@ -2,7 +2,6 @@ const mongodb = require("../data/database");
 
 const ObjectId = require("mongodb").ObjectId;
 const authorize = require("../helpers/authorize");
-const { get } = require("../routes/menu");
 
 const getMenu = async (req, res) => {
   //#swagger.tags=['Menu']
@@ -191,5 +190,5 @@ module.exports = {
     getSingleTopping,
     getSingleSize,
     getSingleCrust,
-    
+
 };
