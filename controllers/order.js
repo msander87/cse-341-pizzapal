@@ -63,6 +63,9 @@ const getSingle = async (req, res) => {
         });
     }
     result.toArray().then((orders) => {
+      if (orders.length === 0) {
+        return res.status(404).json("Order not found.");
+      }
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(orders[0]);
     });
@@ -82,6 +85,16 @@ const createDocument = async (req, res) => {
   } else {
     documentId = req.params.id;
   }
+  const exists = await mongodb
+    .getDatabase()
+    .db()
+    .collection("order")
+    .findOne({
+      customer_id: documentId,
+    });
+    if (!exists) {
+      return res.status(404).json("No customer found.");
+    }
 
   const document = {
     customer_id: documentId,
@@ -121,7 +134,7 @@ const updateDocument = async (req, res) => {
     .findOne({
       _id: documentId
     });
-  if (order.length === 0) {
+  if (!order) {
     return res.status(404).json("Order not found.");
   }
   const document = {
