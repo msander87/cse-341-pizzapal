@@ -49,13 +49,14 @@ const getSingle = async (req, res) => {
       .find({
         oauth_id: documentId
     });
-    if (result.length === 0) {
-      return res.status(404).send({
-        success: false,
-        message: "User not found."
-      });
-    }
+    
     result.toArray().then((users) => {
+      if (users.length === 0) {
+        return res.status(404).send({
+          success: false,
+          message: "User not found."
+        });
+      }
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users[0]);
     });
@@ -124,13 +125,13 @@ const updateDocument = async (req, res) => {
       oauth_id: documentId
     });
 
-    if (user.length === 0) {
+    if (!user) {
       return res.status(404).send({
         success: false,
         message: "User not found."
       });
     }
-    
+
   const document = {
     type: user.type,
     name: req.body.name,
