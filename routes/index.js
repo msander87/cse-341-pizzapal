@@ -8,6 +8,7 @@ router.use(
 
 router.use('/user', require('./user'));
 router.use('/order', require('./order'));
+router.use('/menu', require('./menu'));
 
 
 router.get(
