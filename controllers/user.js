@@ -48,8 +48,15 @@ const getSingle = async (req, res) => {
       .collection('user')
       .find({
         oauth_id: documentId
-      });
+    });
+    
     result.toArray().then((users) => {
+      if (users.length === 0) {
+        return res.status(404).send({
+          success: false,
+          message: "User not found."
+        });
+      }
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(users[0]);
     });
@@ -117,6 +124,14 @@ const updateDocument = async (req, res) => {
     .findOne({
       oauth_id: documentId
     });
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found."
+      });
+    }
+
   const document = {
     type: user.type,
     name: req.body.name,
