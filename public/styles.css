@@ -1,0 +1,16 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f8f9fa;
+}
+.navbar {
+    margin-bottom: 20px;
+}
+
+nav img {
+    height: 50px;
+    width: auto;
+}

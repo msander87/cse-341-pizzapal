@@ -10,6 +10,12 @@ router.use('/user', require('./user'));
 router.use('/order', require('./order'));
 router.use('/menu', require('./menu'));
 
+router.get('/', (req, res) => {
+    res.render('index', {
+        title: 'Home',
+        isAuthenticated: req.session.user ? true : false
+    });
+});
 
 router.get(
     // #swagger.ignore = true
