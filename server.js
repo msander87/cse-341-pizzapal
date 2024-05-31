@@ -6,9 +6,12 @@ const passport = require('passport');
 const session = require('express-session');
 const GitHubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
+const path = require('path');
 
 const port = process.env.PORT || 3000;
 const app = express();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app
     .use(bodyParser.json())
     .use(session({
@@ -36,6 +39,7 @@ app
     .use(cors({
         origin: '*'
     }))
+    .use(express.static('public'))
     .use('/', require('./routes/index.js'));
 
 
@@ -56,10 +60,8 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 })
 
-app.get('/', (req, res) => {res.send(req.session.user !== undefined ? "Logged In!" : "Logged Out")});
-
 app.get('/github/callback', passport.authenticate('github',{
-    failureRedirect: '/api-docs', session:false}),
+    failureRedirect: '/api-docs', session: false}),
     (req, res)=>{
         req.session.user = req.user;
         res.redirect('/');
