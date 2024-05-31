@@ -419,6 +419,20 @@
           "Menu"
         ],
         "description": "Create a product",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "No Content"
@@ -467,7 +481,7 @@
       },
       "put": {
         "tags": [
-          "Users"
+          "Menu"
         ],
         "description": "Update a product",
         "parameters": [
@@ -477,6 +491,18 @@
             "required": true,
             "type": "string",
             "description": "Object ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -501,6 +527,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Menu"
+        ],
         "description": "Delete a product",
         "parameters": [
           {
@@ -550,6 +579,20 @@
           "Menu"
         ],
         "description": "Create a topping",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "topping": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "No Content"
@@ -598,7 +641,7 @@
       },
       "put": {
         "tags": [
-          "Users"
+          "Menu"
         ],
         "description": "Update a topping",
         "parameters": [
@@ -608,6 +651,18 @@
             "required": true,
             "type": "string",
             "description": "Object ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "topping": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -632,6 +687,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Menu"
+        ],
         "description": "Delete a topping",
         "parameters": [
           {
@@ -681,6 +739,20 @@
           "Menu"
         ],
         "description": "Create a size",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "size": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "No Content"
@@ -729,7 +801,7 @@
       },
       "put": {
         "tags": [
-          "Users"
+          "Menu"
         ],
         "description": "Update a size",
         "parameters": [
@@ -739,6 +811,18 @@
             "required": true,
             "type": "string",
             "description": "Object ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "size": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -763,6 +847,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Menu"
+        ],
         "description": "Delete a size",
         "parameters": [
           {
@@ -812,6 +899,20 @@
           "Menu"
         ],
         "description": "Create a crust",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "crust": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "No Content"
@@ -860,7 +961,7 @@
       },
       "put": {
         "tags": [
-          "Users"
+          "Menu"
         ],
         "description": "Update a crust",
         "parameters": [
@@ -870,6 +971,18 @@
             "required": true,
             "type": "string",
             "description": "Object ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "crust": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -894,6 +1007,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Menu"
+        ],
         "description": "Delete a crust",
         "parameters": [
           {
