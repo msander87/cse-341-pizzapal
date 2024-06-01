@@ -6,27 +6,8 @@ const { isAuthenticated } = require("../middleware/authenticate");
 const validation = require("../middleware/validate");
 
 router.get(
-  "/",
-  menuController.getMenu,
-  // #swagger.description = "Get all menu items"
-);
-
-router.get(
-  //#swagger.tags=['Menu']
   "/product",
-  async (req, res) => {
-    try {
-      const products = await menuController.getAllProducts();
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(products);
-    } catch (error) {
-      return res.status(400).send({
-        success: false,
-        message: error.message,
-      });
-    }
-  },
-  // #swagger.description = "Get all products"
+  menuController.getAllProducts,
 );
 
 router.get(
@@ -37,21 +18,8 @@ router.get(
 );
 
 router.get(
-  //#swagger.tags=['Menu']
   "/topping",
-  async (req, res) => {
-    try {
-      const toppings = await menuController.getAllToppings();
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(toppings);
-    } catch (error) {
-      return res.status(400).send({
-        success: false,
-        message: error.message,
-      });
-    }
-  },
-  // #swagger.description = "Get all toppings"
+  menuController.getAllToppings,
 );
 
 router.get(
@@ -62,21 +30,8 @@ router.get(
 );
 
 router.get(
-  //#swagger.tags=['Menu']
   "/size",
-  async (req, res) => {
-    try {
-      const sizes = await menuController.getAllSizes();
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(sizes);
-    } catch (error) {
-      return res.status(400).send({
-        success: false,
-        message: error.message,
-      });
-    }
-  },
-  // #swagger.description = "Get all sizes"
+  menuController.getAllSizes,
 );
 
 router.get(
@@ -87,21 +42,8 @@ router.get(
 );
 
 router.get(
-  //#swagger.tags=['Menu']
   "/crust",
-  async (req, res) => {
-    try {
-      const crusts = await menuController.getAllCrusts();
-      res.setHeader("Content-Type", "application/json");
-      res.status(200).json(crusts);
-    } catch (error) {
-      return res.status(400).send({
-        success: false,
-        message: error.message,
-      });
-    }
-  },
-  // #swagger.description = "Get all crusts"
+  menuController.getAllCrusts,
 );
 
 router.get(

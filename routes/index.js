@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
         title: 'Home',
         isAuthenticated: req.session.user ? true : false
     });
+    // #swagger.ignore = true
 });
 
 router.get(
