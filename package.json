@@ -2,8 +2,11 @@
   "name": "cse-341-pizzapal",
   "version": "1.0.0",
   "main": "server.js",
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "start": "node server.js",
     "swagger": "node swagger.js",
     "dev": "nodemon server.js"
@@ -27,7 +30,9 @@
     "validatorjs": "^3.22.1"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^4.3.2",
     "nodemon": "^3.1.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "supertest": "^7.0.0"
   }
 }
