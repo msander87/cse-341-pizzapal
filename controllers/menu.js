@@ -3,47 +3,86 @@ const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
 const authorize = require("../helpers/authorize");
 
-const getMenu = async (req, res) => {
+
+
+const getAllProducts = async (req, res) => {
   //#swagger.tags=['Menu']
   try {
-    const products = getProducts();
-    const toppings = getToppings();
-    const sizes = getSizes();
-    const crusts = getCrusts();
-    const menu = {
-      ...products,
-      ...toppings,
-      ...sizes,
-      ...crusts,
-    };
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(menu);
+    const result = await mongodb
+      .getDatabase()
+      .db()
+      .collection('product')
+      .find();
+    result.toArray().then((products) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(products);
+    });
   } catch (error) {
     return res.status(400).send({
       success: false,
-      message: error.message,
-    });
+      message: error.message
+    })
   }
 };
 
-const getAllProducts = async () => {
-  const result = await mongodb.getDatabase().db().collection("product").find();
-  return result.toArray();
+const getAllToppings = async (req, res) => {
+  //#swagger.tags=['Menu']
+  try {
+    const result = await mongodb
+      .getDatabase()
+      .db()
+      .collection('topping')
+      .find();
+    result.toArray().then((toppings) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(toppings);
+    });
+  } catch (error) {
+    return res.status(400).send({
+      success: false,
+      message: error.message
+    })
+  }
 };
 
-const getAllToppings = async () => {
-  const result = await mongodb.getDatabase().db().collection("topping").find();
-  return result.toArray();
+const getAllSizes = async (req, res) => {
+  //#swagger.tags=['Menu']
+  try {
+    const result = await mongodb
+      .getDatabase()
+      .db()
+      .collection('size')
+      .find();
+    result.toArray().then((sizes) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(sizes);
+    });
+  } catch (error) {
+    return res.status(400).send({
+      success: false,
+      message: error.message
+    })
+  }
 };
 
-const getAllSizes = async () => {
-  const result = await mongodb.getDatabase().db().collection("size").find();
-  return result.toArray();
-};
-
-const getAllCrusts = async () => {
-  const result = await mongodb.getDatabase().db().collection("crust").find();
-  return result.toArray();
+const getAllCrusts = async (req, res) => {
+  //#swagger.tags=['Menu']
+  try {
+    const result = await mongodb
+      .getDatabase()
+      .db()
+      .collection('crust')
+      .find();
+    result.toArray().then((crusts) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(crusts);
+    });
+  } catch (error) {
+    return res.status(400).send({
+      success: false,
+      message: error.message
+    })
+  }
 };
 
 const getSingleProduct = async (req, res) => {
@@ -521,7 +560,6 @@ const deleteCrust = async (req, res) => {
 };
 
 module.exports = {
-  getMenu,
   getAllProducts,
   getAllToppings,
   getAllSizes,
