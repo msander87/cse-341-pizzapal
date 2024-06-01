@@ -377,31 +377,12 @@
         }
       }
     },
-    "/menu/": {
-      "get": {
-        "tags": [
-          "Menu"
-        ],
-        "description": "Get all menu items",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
     "/menu/product": {
       "get": {
         "tags": [
           "Menu"
         ],
-        "description": "Get all products",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -561,7 +542,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Get all toppings",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -721,7 +702,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Get all sizes",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -881,7 +862,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Get all crusts",
+        "description": "",
         "produces": [
           "application/json"
         ],
