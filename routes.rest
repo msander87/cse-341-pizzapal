@@ -7,7 +7,7 @@ http://localhost:3000/
 http://localhost:3000/user/
 
 ### Get all order
-http://localhost:3000/order/
+http://localhost:3000/menu/topping/
 
 ### Get a single user
 http://localhost:3000/user/66451233507e940ffa3f5a4c
