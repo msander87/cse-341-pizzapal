@@ -28,7 +28,7 @@ const getAll = async (req, res) => {
       res.status(200).json(orders);
     });
   } catch (error) {
-    return res.status(400).send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -38,7 +38,7 @@ const getAll = async (req, res) => {
 const getSingle = async (req, res) => {
   //#swagger.tags=['Orders']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   try {
@@ -70,7 +70,7 @@ const getSingle = async (req, res) => {
       res.status(200).json(orders[0]);
     });
   } catch (error) {
-    return res.status(400).send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -88,9 +88,9 @@ const createDocument = async (req, res) => {
   const exists = await mongodb
     .getDatabase()
     .db()
-    .collection("order")
+    .collection("user")
     .findOne({
-      customer_id: documentId,
+      oauth_id: documentId,
     });
     if (!exists) {
       return res.status(404).json("No customer found.");
@@ -120,7 +120,7 @@ const createDocument = async (req, res) => {
 const updateDocument = async (req, res) => {
   //#swagger.tags=['Orders']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   const access = await authorize(req, res);
@@ -165,7 +165,7 @@ const updateDocument = async (req, res) => {
 const deleteDocument = async (req, res) => {
   //#swagger.tags=['Orders']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   const access = await authorize(req, res);

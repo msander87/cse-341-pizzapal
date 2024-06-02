@@ -88,7 +88,7 @@ const getAllCrusts = async (req, res) => {
 const getSingleProduct = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid product id");
+    return res.status(400).json("Must use a valid product id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   try {
@@ -97,13 +97,13 @@ const getSingleProduct = async (req, res) => {
     });
     result.toArray().then((product) => {
       if (product.length === 0) {
-        res.status(404).json("Product not found");
+        return res.status(404).json("Product not found");
       }
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(product);
     });
   } catch (error) {
-    return res.status(400).send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -113,7 +113,7 @@ const getSingleProduct = async (req, res) => {
 const getSingleTopping = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid topping id");
+    return res.status(400).json("Must use a valid topping id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   try {
@@ -122,13 +122,13 @@ const getSingleTopping = async (req, res) => {
     });
     result.toArray().then((topping) => {
       if (topping.length === 0) {
-        res.status(404).json("Topping not found");
+        return res.status(404).json("Topping not found");
       }
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(topping);
     });
   } catch (error) {
-    return res.status(400).send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -138,7 +138,7 @@ const getSingleTopping = async (req, res) => {
 const getSingleSize = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid size id");
+    return res.status(400).json("Must use a valid size id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   try {
@@ -147,13 +147,13 @@ const getSingleSize = async (req, res) => {
     });
     result.toArray().then((size) => {
       if (size.length === 0) {
-        res.status(404).json("Size not found");
+        return res.status(404).json("Size not found");
       }
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(size);
     });
   } catch (error) {
-    return res.status(400).send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -163,7 +163,7 @@ const getSingleSize = async (req, res) => {
 const getSingleCrust = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid crust id");
+    return res.status(400).json("Must use a valid crust id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   try {
@@ -172,13 +172,13 @@ const getSingleCrust = async (req, res) => {
     });
     result.toArray().then((crust) => {
       if (crust.length === 0) {
-        res.status(404).json("Crust not found");
+        return res.status(404).json("Crust not found");
       }
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(crust);
     });
   } catch (error) {
-    return res.status(400).send({
+    res.status(400).send({
       success: false,
       message: error.message,
     });
@@ -301,7 +301,7 @@ const updateProduct = async (req, res) => {
     });
   }
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   let product = await mongodb
@@ -351,7 +351,7 @@ const updateTopping = async (req, res) => {
     });
   }
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   let topping = await mongodb
@@ -401,7 +401,7 @@ const updateSize = async (req, res) => {
     });
   }
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   let size = await mongodb.getDatabase().db().collection("size").findOne({
@@ -447,7 +447,7 @@ const updateCrust = async (req, res) => {
     });
   }
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   let crust = await mongodb.getDatabase().db().collection("crust").findOne({
@@ -486,7 +486,7 @@ const updateCrust = async (req, res) => {
 const deleteProduct = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
@@ -505,7 +505,7 @@ const deleteProduct = async (req, res) => {
 const deleteTopping = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
@@ -524,7 +524,7 @@ const deleteTopping = async (req, res) => {
 const deleteSize = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb
@@ -543,7 +543,7 @@ const deleteSize = async (req, res) => {
 const deleteCrust = async (req, res) => {
   //#swagger.tags=['Menu']
   if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json("Must use a valid order id");
+    return res.status(400).json("Must use a valid order id");
   }
   const documentId = ObjectId.createFromHexString(req.params.id);
   const response = await mongodb

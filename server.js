@@ -79,7 +79,7 @@ if (process.env.NODE_ENV === 'test') {
             console.log(err);
         } else {
             app.listen(port, () => {
-                console.log(`Database is listening on port ${process.env.PORT}`)
+                console.log(`Database is listening on port ${port}`)
             });
         }
     });
