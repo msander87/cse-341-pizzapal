@@ -88,9 +88,9 @@ const createDocument = async (req, res) => {
   const exists = await mongodb
     .getDatabase()
     .db()
-    .collection("order")
+    .collection("user")
     .findOne({
-      customer_id: documentId,
+      oauth_id: documentId,
     });
     if (!exists) {
       return res.status(404).json("No customer found.");
