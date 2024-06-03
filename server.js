@@ -60,9 +60,11 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 })
 
-app.get('/github/callback', passport.authenticate('github',{
-    failureRedirect: '/api-docs', session: false}),
-    (req, res)=>{
+app.get('/github/callback', passport.authenticate('github', {
+        failureRedirect: '/api-docs',
+        session: false
+    }),
+    (req, res) => {
         req.session.user = req.user;
         res.redirect('/');
     });
@@ -71,6 +73,9 @@ process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`)
 });
 
+
+
+//export app to unit tests
 if (process.env.NODE_ENV === 'test') {
     module.exports = app;
 } else {

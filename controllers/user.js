@@ -48,8 +48,8 @@ const getSingle = async (req, res) => {
       .collection('user')
       .find({
         oauth_id: documentId
-    });
-    
+      });
+
     result.toArray().then((users) => {
       if (users.length === 0) {
         return res.status(404).send({
@@ -125,12 +125,12 @@ const updateDocument = async (req, res) => {
       oauth_id: documentId
     });
 
-    if (!user) {
-      return res.status(404).send({
-        success: false,
-        message: "User not found."
-      });
-    }
+  if (!user) {
+    return res.status(404).send({
+      success: false,
+      message: "User not found."
+    });
+  }
 
   const document = {
     type: user.type,

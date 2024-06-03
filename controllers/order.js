@@ -92,9 +92,9 @@ const createDocument = async (req, res) => {
     .findOne({
       oauth_id: documentId,
     });
-    if (!exists) {
-      return res.status(404).json("No customer found.");
-    }
+  if (!exists) {
+    return res.status(404).json("No customer found.");
+  }
 
   const document = {
     customer_id: documentId,

@@ -194,8 +194,7 @@ const createProduct = async (req, res) => {
       message: "You are not authorized to access this resource.",
     });
   }
-  const product = 
-  {
+  const product = {
     product: req.body.product,
   };
   const result = await mongodb
@@ -221,10 +220,10 @@ const createTopping = async (req, res) => {
       message: "You are not authorized to access this resource.",
     });
   }
-  const topping = 
-  {
+  const topping = {
     topping: req.body.topping,
-  };  const result = await mongodb
+  };
+  const result = await mongodb
     .getDatabase()
     .db()
     .collection("topping")
@@ -247,10 +246,10 @@ const createSize = async (req, res) => {
       message: "You are not authorized to access this resource.",
     });
   }
-  const size = 
-  {
+  const size = {
     size: req.body.size,
-  };  const result = await mongodb
+  };
+  const result = await mongodb
     .getDatabase()
     .db()
     .collection("size")
@@ -273,8 +272,7 @@ const createCrust = async (req, res) => {
       message: "You are not authorized to access this resource.",
     });
   }
-  const crust = 
-  {
+  const crust = {
     crust: req.body.crust,
   }
   const result = await mongodb
@@ -318,16 +316,14 @@ const updateProduct = async (req, res) => {
       message: "Product not found.",
     });
   }
-  product = 
-  {
+  product = {
     product: req.body.product,
   }
   const response = await mongodb
     .getDatabase()
     .db()
     .collection("product")
-    .replaceOne(
-      {
+    .replaceOne({
         _id: documentId,
       },
       product,
@@ -368,16 +364,14 @@ const updateTopping = async (req, res) => {
       message: "Topping not found.",
     });
   }
-  topping = 
-  {
+  topping = {
     topping: req.body.topping,
   }
   const response = await mongodb
     .getDatabase()
     .db()
     .collection("topping")
-    .replaceOne(
-      {
+    .replaceOne({
         _id: documentId,
       },
       req.body,
@@ -414,16 +408,14 @@ const updateSize = async (req, res) => {
       message: "Size not found.",
     });
   }
-  size = 
-  {
+  size = {
     size: req.body.size,
   }
   const response = await mongodb
     .getDatabase()
     .db()
     .collection("size")
-    .replaceOne(
-      {
+    .replaceOne({
         _id: documentId,
       },
       req.body,
@@ -460,16 +452,14 @@ const updateCrust = async (req, res) => {
       message: "Crust not found.",
     });
   }
-  crust = 
-  {
+  crust = {
     crust: req.body.crust,
   }
   const response = await mongodb
     .getDatabase()
     .db()
     .collection("crust")
-    .replaceOne(
-      {
+    .replaceOne({
         _id: documentId,
       },
       req.body,
@@ -493,7 +483,9 @@ const deleteProduct = async (req, res) => {
     .getDatabase()
     .db()
     .collection("product")
-    .deleteOne({ _id: documentId });
+    .deleteOne({
+      _id: documentId
+    });
 
   if (response.deletedCount > 0) {
     res.status(204).send();
@@ -512,7 +504,9 @@ const deleteTopping = async (req, res) => {
     .getDatabase()
     .db()
     .collection("topping")
-    .deleteOne({ _id: documentId });
+    .deleteOne({
+      _id: documentId
+    });
 
   if (response.deletedCount > 0) {
     res.status(204).send();
@@ -531,7 +525,9 @@ const deleteSize = async (req, res) => {
     .getDatabase()
     .db()
     .collection("size")
-    .deleteOne({ _id: documentId });
+    .deleteOne({
+      _id: documentId
+    });
 
   if (response.deletedCount > 0) {
     res.status(204).send();
@@ -550,7 +546,9 @@ const deleteCrust = async (req, res) => {
     .getDatabase()
     .db()
     .collection("crust")
-    .deleteOne({ _id: documentId });
+    .deleteOne({
+      _id: documentId
+    });
 
   if (response.deletedCount > 0) {
     res.status(204).send();
